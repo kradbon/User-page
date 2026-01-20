@@ -30,7 +30,7 @@ type NavGroup = {
             class="h-10 w-10 rounded-2xl bg-emerald-500 text-white font-black flex items-center justify-center"
             aria-hidden="true"
           >
-            <shared-icon name="logo" [size]="18"></shared-icon>
+            <shared-icon name="logo" [size]="24"></shared-icon>
           </div>
           <div>
             <div class="text-sm font-extrabold leading-tight tracking-tight">Brooklyn LMS</div>
@@ -144,10 +144,10 @@ type NavGroup = {
               }
             </select>
             <button class="icon-btn" type="button" (click)="toggleNotifications()">
-              <shared-icon [name]="notificationsEnabled() ? 'bell_off' : 'bell'" [size]="24"></shared-icon>
+              <shared-icon [name]="notificationsEnabled() ? 'bell_off' : 'bell'" [size]="20"></shared-icon>
             </button>
             <button class="icon-btn" type="button" (click)="toggleTheme()">
-              <shared-icon [name]="theme() === 'dark' ? 'sun' : 'moon'" [size]="24"></shared-icon>
+              <shared-icon [name]="theme() === 'dark' ? 'sun' : 'moon'" [size]="20"></shared-icon>
             </button>
           </div>
 
@@ -196,6 +196,8 @@ type NavGroup = {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        padding: 0;
+        line-height: 0;
         cursor: pointer;
         color: #334155;
       }

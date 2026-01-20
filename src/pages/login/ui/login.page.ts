@@ -20,7 +20,7 @@ import { I18nStore, isSupportedLocale } from '@shared/i18n/i18n.store';
         <div class="flex items-center justify-between gap-3">
           <div class="flex items-center gap-3">
             <div class="h-11 w-11 rounded-2xl bg-emerald-500 text-white flex items-center justify-center" aria-hidden="true">
-              <shared-icon name="logo" [size]="18"></shared-icon>
+              <shared-icon name="logo" [size]="24"></shared-icon>
             </div>
             <div>
               <div class="text-sm font-extrabold leading-tight tracking-tight">Brooklyn LMS</div>
