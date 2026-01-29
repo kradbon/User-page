@@ -53,7 +53,7 @@ export default function AdminHistoryPage() {
                   <span className="font-semibold">{change.label}</span>
                   {change.before !== undefined || change.after !== undefined ? (
                     <span className="block text-[11px] admin-muted">
-                      {JSON.stringify(change.before)} -> {JSON.stringify(change.after)}
+                      {JSON.stringify(change.before)} {"\u2192"} {JSON.stringify(change.after)}
                     </span>
                   ) : null}
                 </li>
