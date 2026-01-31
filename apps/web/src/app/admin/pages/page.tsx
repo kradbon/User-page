@@ -426,11 +426,33 @@ export default function AdminPagesPage() {
               <section className="grid gap-2 md:grid-cols-2">
                 <label className="text-xs font-semibold admin-muted">
                   {t.ctaLabel}
-                  <Input value={draft.cta?.label || ""} onChange={(e) => update({ cta: { ...draft.cta, label: e.target.value } })} className="mt-2" />
+                  <Input
+                    value={draft.cta?.label || ""}
+                    onChange={(e) =>
+                      update({
+                        cta: {
+                          label: e.target.value,
+                          href: draft.cta?.href || ""
+                        }
+                      })
+                    }
+                    className="mt-2"
+                  />
                 </label>
                 <label className="text-xs font-semibold admin-muted">
                   {t.ctaLink}
-                  <Input value={draft.cta?.href || ""} onChange={(e) => update({ cta: { ...draft.cta, href: e.target.value } })} className="mt-2" />
+                  <Input
+                    value={draft.cta?.href || ""}
+                    onChange={(e) =>
+                      update({
+                        cta: {
+                          label: draft.cta?.label || "",
+                          href: e.target.value
+                        }
+                      })
+                    }
+                    className="mt-2"
+                  />
                 </label>
               </section>
             </>
