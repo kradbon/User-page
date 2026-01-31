@@ -114,15 +114,39 @@ function StandardLayout({ page, resolveHref }: { page: PageContent; resolveHref:
       <Hero page={page} resolveHref={resolveHref} />
       {page.sections?.length ? (
         <div className="space-y-0">
+          <Section className="bg-[#f7f4ee] border-t border-slate-200/70" pad="2.6rem">
+            <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
+              <div className="space-y-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-400">Inside the program</p>
+                <h2 className="font-display text-3xl md:text-4xl">How it’s structured</h2>
+                <p className="text-sm text-slate-600">
+                  Each module builds toward a portfolio‑grade output. You get live critiques, structured practice, and a clear finish line.
+                </p>
+              </div>
+              <div className="grid gap-3">
+                {page.sections.slice(0, 3).map((section, index) => (
+                  <div key={section.heading} className="flex items-start gap-4 border-l border-slate-200 pl-4">
+                    <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">{section.heading}</p>
+                      <p className="text-xs text-slate-500">{section.body}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Section>
           {page.sections.map((section, index) => {
             const isReversed = index % 2 === 1;
             return (
               <Section
                 key={section.heading}
-                className={clsx("border-t border-slate-200/70", isReversed ? "bg-[#f7f4ee]" : "bg-white")}
+                className={clsx("border-t border-slate-200/70", isReversed ? "bg-white" : "bg-[#fbfaf7]")}
                 pad="2.8rem"
               >
-                <div className={`grid items-center gap-12 md:grid-cols-[0.95fr_1.05fr] ${isReversed ? "md:[&>*:first-child]:order-2" : ""}`}>
+                <div className={`grid items-center gap-12 md:grid-cols-[1.05fr_0.95fr] ${isReversed ? "md:[&>*:first-child]:order-2" : ""}`}>
                   <div className="space-y-5">
                     <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">
                       <span>{String(index + 1).padStart(2, "0")}</span>
@@ -131,15 +155,19 @@ function StandardLayout({ page, resolveHref }: { page: PageContent; resolveHref:
                     </div>
                     <h2 className="font-display text-3xl md:text-4xl">{section.heading}</h2>
                     <p className="text-sm text-slate-600">{section.body}</p>
+                    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                      <span>Portfolio output</span>
+                    </div>
                   </div>
                   <div className="relative">
                     <div className="absolute -left-6 -top-6 h-full w-full rounded-[24px] border border-slate-200/60 bg-white/70" />
                     {section.image ? (
                       <div className="relative overflow-hidden rounded-[22px] bg-slate-100">
-                        <img src={section.image} alt={section.heading} className="h-72 w-full object-cover" />
+                        <img src={section.image} alt={section.heading} className="h-80 w-full object-cover" />
                       </div>
                     ) : (
-                      <div className="relative h-72 rounded-[22px] bg-slate-100" />
+                      <div className="relative h-80 rounded-[22px] bg-slate-100" />
                     )}
                   </div>
                 </div>
@@ -169,15 +197,18 @@ function TeamLayout({ page, resolveHref }: { page: PageContent; resolveHref: (hr
             <h1 className="font-display text-4xl md:text-5xl">{page.title}</h1>
             {page.subtitle ? <p className="text-lg text-slate-600">{page.subtitle}</p> : null}
             {page.description ? <p className="text-sm text-slate-600">{page.description}</p> : null}
-            {page.cta ? (
-              <a
-                href={resolveHref(page.cta.href)}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 transition hover:-translate-y-0.5"
-              >
-                {page.cta.label}
-                <span>→</span>
-              </a>
-            ) : null}
+            <div className="flex items-center gap-4">
+              {page.cta ? (
+                <a
+                  href={resolveHref(page.cta.href)}
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:-translate-y-0.5"
+                >
+                  {page.cta.label}
+                  <span>→</span>
+                </a>
+              ) : null}
+              <span className="text-xs uppercase tracking-[0.3em] text-slate-400">Enterprise ready</span>
+            </div>
           </div>
           <div className="rounded-[20px] border border-slate-200/70 bg-white/90 p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
             <p className="text-sm font-semibold">What teams get</p>
