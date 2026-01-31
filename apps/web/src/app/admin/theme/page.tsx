@@ -131,9 +131,12 @@ export default function AdminThemePage() {
 
   async function handleLogoUpload(file: File, field: "logo" | "favicon") {
     const url = await fileToBase64(file);
-    const next = { ...brandTenant, [field]: { url } };
-    setBrandTenant(next);
-    tenantMutation.mutate(next);
+    setBrandTenant((current) => {
+      if (!current) return current;
+      const next = { ...current, [field]: { url } };
+      tenantMutation.mutate(next);
+      return next;
+    });
   }
 
   return (
