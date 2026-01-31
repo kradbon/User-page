@@ -371,7 +371,8 @@ export function Faq({ block }: { block: Block }) {
   );
 }
 
-export function ApplySection({ block, tenant, slug }: { block: Block; tenant: Tenant; slug: string }) {
+export function ApplySection({ block, tenant, slug }: { block: Block; tenant?: Tenant; slug: string }) {
+  if (!tenant) return null;
   const title = block.props.title || "Not sure where to start?";
   const titleParts = title.split(" ");
   const titleAccent = titleParts.length > 1 ? titleParts.pop() : null;
